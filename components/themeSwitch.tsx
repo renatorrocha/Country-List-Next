@@ -19,7 +19,7 @@ export default function ThemeSwitch() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="border border-zinc-100 dark:border-zinc-800 px-2 py-1 rounded-sm hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all duration-300">
+      <DropdownMenuTrigger className="border shadow-md border-zinc-200 dark:border-zinc-800 px-2 py-1 rounded-sm hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all duration-300">
         Theme Switch
       </DropdownMenuTrigger>
       <DropdownMenuContent>
