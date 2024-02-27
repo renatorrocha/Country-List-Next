@@ -1,11 +1,18 @@
-import Countries from "@/components/countries";
+import ListAllCountries from "@/components/list-all-countries";
 import SearchBar from "@/components/searchbar";
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch("https://restcountries.com/v3.1/all");
+  const countries = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data.");
+  }
+
   return (
-    <main className="max-h-screen px-24 pt-10">
+    <main className="mx-auto max-h-screen max-w-[1440px] px-6 pt-10 md:px-24">
       <SearchBar />
-      <Countries />
+      <ListAllCountries data={countries} />
     </main>
   );
 }

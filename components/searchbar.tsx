@@ -13,10 +13,14 @@ import { Button } from "./ui/button";
 export default function SearchBar() {
   return (
     <section className="flex justify-between">
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         <Input type="text" placeholder="Search for a country..." />
 
-        <Button variant="outline" size="icon">
+        <Button
+          variant="outline"
+          className=" hidden items-center md:flex"
+          size="icon"
+        >
           <SearchIcon className="h-4 w-4" />
         </Button>
       </div>
