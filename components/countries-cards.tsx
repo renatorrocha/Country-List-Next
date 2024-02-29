@@ -5,7 +5,10 @@ import Link from "next/link";
 export default function CountriesCards({ country }: { country: ICountry }) {
   return (
     <div className=" max-h-80 w-64 rounded-md border border-zinc-200 shadow-md transition-all duration-300 hover:scale-105 hover:bg-zinc-200 dark:border-zinc-950 dark:bg-zinc-950 dark:hover:bg-zinc-900">
-      <Link href="/" className=" flex flex-col items-center justify-center ">
+      <Link
+        href={`/country/${country.name.common}`}
+        className=" flex flex-col items-center justify-center "
+      >
         <div className="relative h-32 w-full">
           <Image
             src={country.flags.svg}
