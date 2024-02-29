@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function page({ params }: { params: { slug: string } }) {
   const country = await getCountryByName(params.slug);
-  console.log(country.capital);
+  console.log(country[0].name.common);
 
   return (
     <main className="group mx-auto max-h-screen max-w-[1440px] px-6 pt-10 md:px-24">
@@ -17,7 +17,7 @@ export default async function page({ params }: { params: { slug: string } }) {
       </Link>
 
       <section>
-        <p>{country.name}</p>
+        <p>{country[0].name.common}</p>
       </section>
     </main>
   );
