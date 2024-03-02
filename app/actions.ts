@@ -8,9 +8,9 @@ export async function getAllCountries() {
   return response.json();
 }
 
-export async function getCountryByName(name: string) {
+export async function getCountryByName(countryName: string) {
   const response = await fetch(
-    `https://restcountries.com/v3.1/name/${name}?fullText=true`,
+    `https://restcountries.com/v3.1/name/${countryName}?fullText=true`,
   );
 
   if (!response.ok) {

@@ -9,4 +9,16 @@
   .Animate_3s {
     @apply transition-all duration-300
   }
+
+  .country-title {
+    @apply font-bold
+  }
+
+  .country-description {
+    @apply font-semibold
+  }
+
+  .country-value {
+    @apply font-normal
+  }
 }
