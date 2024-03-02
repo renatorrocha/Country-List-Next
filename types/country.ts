@@ -16,6 +16,7 @@ export interface ICountry {
   subregion: string;
   tld: string;
   languages: string[];
+  cca3: string;
 
   currencies: {
     currency: {
@@ -23,6 +24,8 @@ export interface ICountry {
       symbol: string;
     };
   };
+
+  borders: string[];
 
   flags: {
     svg: string;

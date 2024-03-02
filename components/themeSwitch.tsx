@@ -1,15 +1,10 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
-import { useState } from "react";
-import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";

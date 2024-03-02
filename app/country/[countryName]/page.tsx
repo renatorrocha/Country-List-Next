@@ -1,4 +1,9 @@
-import { getCountryByName } from "@/app/actions";
+import {
+  getAllCountries,
+  getCountryBorders,
+  getCountryByName,
+} from "@/app/actions";
+import { Badge, badgeVariants } from "@/components/ui/badge";
 import { ICountry } from "@/types/country";
 import { ArrowLeftIcon } from "lucide-react";
 import Image from "next/image";
@@ -15,11 +20,11 @@ export default async function page({ params: { countryName } }: ICountryPage) {
     (country: ICountry) =>
       country.name.common == decodeURIComponent(countryName),
   );
-
   if (!country) {
     redirect("/error");
     return <></>;
   }
+  const countriesBorders = await getCountryBorders(country);
 
   return (
     <main className="mx-auto max-h-screen max-w-[1440px] space-y-10 px-6 pt-10 md:px-24">
@@ -32,7 +37,7 @@ export default async function page({ params: { countryName } }: ICountryPage) {
       </Link>
 
       <article className="flex w-full items-center justify-between gap-24">
-        <div className="relative h-80 w-full rounded-lg border-[16px] border-zinc-900/80">
+        <div className="relative h-80 w-full rounded-lg border-[16px] border-zinc-100 dark:border-zinc-900/80">
           <Image
             src={country.flags.svg}
             alt={country.flags.alt}
@@ -49,7 +54,7 @@ export default async function page({ params: { countryName } }: ICountryPage) {
             <section className="flex w-max flex-col gap-2">
               <p className="country-description">
                 Native Name:{" "}
-                <span className="inline-block font-normal">
+                <span className="font-normal">
                   {Object.values(country.name.nativeName)[0].official}
                 </span>
               </p>
@@ -104,8 +109,26 @@ export default async function page({ params: { countryName } }: ICountryPage) {
           </div>
 
           <section className="flex">
-            <p>Border Countries</p>
-            funcao map
+            <p className="country-description">
+              Border Countries: {""}
+              <span className="ms-2 inline-block items-center space-x-4">
+                {countriesBorders ? (
+                  countriesBorders.map((country, index, array) => (
+                    <Link
+                      href={`/country/${country.name}`}
+                      className={`${badgeVariants({ variant: "outline" })} Animate_3s hover:scale-105`}
+                      key={index}
+                    >
+                      {country.name}
+                    </Link>
+                  ))
+                ) : (
+                  <span className="country-value">
+                    This country has no borders !
+                  </span>
+                )}
+              </span>
+            </p>
           </section>
         </aside>
       </article>

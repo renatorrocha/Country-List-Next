@@ -19,7 +19,7 @@ export default function CountriesCards({ country }: { country: ICountry }) {
         </div>
 
         <section className="flex flex-col items-center gap-2 pb-6 pt-4">
-          <h1 className="font-bold">{country.name.common}</h1>
+          <h1 className="text-center font-bold">{country.name.common}</h1>
           <section className="flex flex-col gap-1">
             <p className="font-semibold">
               Population:{" "}
@@ -29,7 +29,10 @@ export default function CountriesCards({ country }: { country: ICountry }) {
               Region: <span className="font-normal">{country.region}</span>
             </p>
             <p className="font-semibold">
-              Capital: <span className="font-normal">{country.capital}</span>
+              Capital:{" "}
+              <span className=" font-normal">
+                {country.capital || "No Capital"}
+              </span>
             </p>
           </section>
         </section>
