@@ -108,27 +108,25 @@ export default async function page({ params: { countryName } }: ICountryPage) {
             </section>
           </div>
 
-          <section className="flex">
-            <p className="country-description">
-              Border Countries: {""}
-              <span className="ms-2 inline-block items-center space-x-4">
-                {countriesBorders ? (
-                  countriesBorders.map((country, index, array) => (
-                    <Link
-                      href={`/country/${country.name}`}
-                      className={`${badgeVariants({ variant: "outline" })} Animate_3s hover:scale-105`}
-                      key={index}
-                    >
-                      {country.name}
-                    </Link>
-                  ))
-                ) : (
-                  <span className="country-value">
-                    This country has no borders !
-                  </span>
-                )}
-              </span>
-            </p>
+          <section className="flex flex-col gap-2">
+            <p className="country-description">Border Countries:</p>
+            <div className="flex gap-3 justify-center">
+              {countriesBorders ? (
+                countriesBorders.map((country, index) => (
+                  <Link
+                    href={`/country/${country.name}`}
+                    className={`${badgeVariants({ variant: "outline" })} Animate_3s hover:scale-105`}
+                    key={index}
+                  >
+                    {country.name}
+                  </Link>
+                ))
+              ) : (
+                <span className="country-value">
+                  This country has no borders !
+                </span>
+              )}
+            </div>
           </section>
         </aside>
       </article>
