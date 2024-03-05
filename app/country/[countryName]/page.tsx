@@ -20,6 +20,7 @@ export default async function page({ params: { countryName } }: ICountryPage) {
     (country: ICountry) =>
       country.name.common == decodeURIComponent(countryName),
   );
+
   if (!country) {
     redirect("/error");
     return <></>;
@@ -27,7 +28,7 @@ export default async function page({ params: { countryName } }: ICountryPage) {
   const countriesBorders = await getCountryBorders(country);
 
   return (
-    <main className="mx-auto max-h-screen max-w-[1440px] space-y-10 px-6 pt-10 md:px-24">
+    <main className="mx-auto max-h-screen max-w-[1440px] space-y-5 px-6 pt-5 md:space-y-10 md:px-24 md:pt-10">
       <Link
         href={"/"}
         className="Border_custom flex w-fit items-center gap-4 px-5 py-2 transition-all duration-300 hover:scale-105"
@@ -36,14 +37,13 @@ export default async function page({ params: { countryName } }: ICountryPage) {
         <p className="font-semibold">Back</p>
       </Link>
 
-      <article className="flex w-full items-center justify-between gap-24">
+      <article className="flex w-full flex-col items-center justify-between gap-12 md:gap-24 xl:flex-row">
         <div className="relative h-80 w-full rounded-lg border-[16px] border-zinc-100 dark:border-zinc-900/80">
           <Image
             src={country.flags.svg}
             alt={country.flags.alt}
             priority
             fill
-            className="object-cover"
           />
         </div>
 
@@ -110,12 +110,12 @@ export default async function page({ params: { countryName } }: ICountryPage) {
 
           <section className="flex flex-col gap-2">
             <p className="country-description">Border Countries:</p>
-            <div className="flex gap-3 justify-center">
+            <div className="flex flex-wrap justify-center gap-3">
               {countriesBorders ? (
                 countriesBorders.map((country, index) => (
                   <Link
                     href={`/country/${country.name}`}
-                    className={`${badgeVariants({ variant: "outline" })} Animate_3s hover:scale-105`}
+                    className={`${badgeVariants({ variant: "outline" })} Animate_3s text-nowrap text-center hover:scale-110`}
                     key={index}
                   >
                     {country.name}
